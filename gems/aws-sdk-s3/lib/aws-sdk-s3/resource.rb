@@ -8,15 +8,12 @@
 module Aws::S3
   class Resource
 
+    attr_reader :client
+
     # @param options ({})
     # @option options [Client] :client
     def initialize(options = {})
       @client = options[:client] || Client.new(options)
-    end
-
-    # @return [Client]
-    def client
-      @client
     end
 
     # @!group Actions

@@ -8,6 +8,8 @@
 module Aws::S3
   class Object
 
+    attr_reader :bucket_name, :key, :client
+
     extend Aws::Deprecations
 
     # @overload def initialize(bucket_name, key, options = {})
@@ -27,16 +29,6 @@ module Aws::S3
     end
 
     # @!group Read-Only Attributes
-
-    # @return [String]
-    def bucket_name
-      @bucket_name
-    end
-
-    # @return [String]
-    def key
-      @key
-    end
 
     # Specifies whether the object retrieved was (true) or was not (false) a
     # Delete Marker. If false, this response header does not appear in the
@@ -235,11 +227,6 @@ module Aws::S3
     end
 
     # @!endgroup
-
-    # @return [Client]
-    def client
-      @client
-    end
 
     # Loads, or reloads {#data} for the current {Object}.
     # Returns `self` making it possible to chain methods.
